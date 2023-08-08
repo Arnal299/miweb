@@ -1,40 +1,36 @@
 <!DOCTYPE html>
-<html lang="en">
-    <head>
-        <!--vinvular los archivos styles para que los estilos se apliquen-->
-        <link rel="stylesheet" href="estilos.css">
-        <!--Para que el estilo de la página se vea similar tanto en móvil como en ordenador de escritorio o portátil-->
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Galeria de Fotos2</title>
-        <meta charset="utf-8">
-    </head>
-    <body>
-        <div class="header">
-            <header class="header">
-                <h1>Galeria de Fotos del Usuario</h1>
-            </header>
-        </div>
-        <nav>
-            <ul class="navbar">
-              <li class="li"><a href="http://127.0.0.1:5500/index.html">Inicio</a></li>
-              <li><a href="http://127.0.0.1:5500/index2.html">Pagina del usuario</a></li>
-              <li><a href="#servicios">Servicios</a></li>
-              <li><a href="#contacto">Contacto</a></li>
-            </ul>
-          </nav>
-          <input type="file" id="input-imagen">
-          <button onclick="agregarImagen()" id="input-imagen">Agregar imagen</button>
-       
-          <script>
-           function agregarImagen() {
-  var input = document.getElementById('input-imagen');
-  var archivo = input.files[0];
+<html>
+<head>
+  <title>Galería de Fotos</title>
+  <link rel="stylesheet" type="text/css" href="estilos.css">
+</head>
+<body>
+  <header class="header">
+    <h1>Galeria de Fotos</h1>
+  </header>
+  <nav>
+    <ul class="navbar">
+      <li class="li"><a href="http://127.0.0.1:5500/index.html">Inicio</a></li>
+      <li><a href="http://127.0.0.1:5500/index2.html">Pagina del usuario</a></li>
+      <li><a href="#servicios">Servicios</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul>
+  </nav>
+
+  <div class="container">
+  <form id="addPhotoForm">
+    <input type="text" id="titleInput" placeholder="Título" required>
+    <input type="text" id="descriptionInput" placeholder="Descripción" required>
+    <input type="file" id="imageInput" required>
+    <button type="submit">Agregar Foto</button>
+    
+  </form>
   
-  if (archivo) {
-    var imagen = document.createElement("img");
-    imagen.src = URL.createObjectURL(archivo);
-    document.body.appendChild(imagen);
-  }
-}
-          </script>
-    </body>
+</div>
+  <!-- Galería de fotos -->
+  <div id="gallery"></div>
+
+  <script src="javascript.js"></script>
+  
+</body>
+</html>
