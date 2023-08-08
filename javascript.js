@@ -71,7 +71,7 @@ function showEditForm(photoId, title, description) {
   editModal.style.display = 'block';
 }
 
-
+//fgghj
 
 
 // Event listener para agregar una foto al enviar el formulario
