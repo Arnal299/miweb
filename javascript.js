@@ -1,7 +1,7 @@
 
 let photos = [];
 
-// Función para mostrar las fotos en la galería
+
 function mostrarImagen() {
   const gallery = document.getElementById('gallery');
   gallery.innerHTML = '';
@@ -12,7 +12,7 @@ function mostrarImagen() {
     photoElement.innerHTML = `
       <img src="${photo.image}" alt="${photo.title}">
       <div class="edit-eliminar-buttons">
-        <button class="edit-button" onclick="showEditForm('${photo.id}', '${photo.title}', '${photo.description}')">Modificar</button>
+        <button class="edit-button" onclick="editar('${photo.id}', '${photo.title}', '${photo.description}')">Modificar</button>
         <button class="eliminar-button" onclick="eliminar('${photo.id}')">Quit</button>
       </div>
       <div class="photo-details">
@@ -24,7 +24,7 @@ function mostrarImagen() {
   });
 }
 
-// Función para agregar una nueva foto
+
 function insertarImagen(event) {
   event.preventDefault();
 
@@ -57,27 +57,32 @@ function eliminar(photoId) {
   photos = photos.filter((photo) => photo.id !== photoId);
   mostrarImagen(photos);
 }
-// Función para mostrar el formulario de edición de una foto
-function showEditForm(photoId, title, description) {
-  const editModal = document.getElementById('edit-modal');
-  const editTitle = document.getElementById('edit-title');
-  const editDescription = document.getElementById('edit-description');
-  const editPhotoId = document.getElementById('edit-photo-id');
+function editar(photoId) {
+  const photo = photos.find((photo) => photo.id === photoId);
+  if (photo) {
+    const newTitle = prompt('Ingrese el nuevo título:', photo.title);
+    const newDescription = prompt('Ingrese la nueva descripción:', photo.description);
 
-  editTitle.value = title;
-  editDescription.value = description;
-  editPhotoId.value = photoId;
-
-  editModal.style.display = 'block';
+    if (newTitle !== null && newDescription !== null) {
+      photo.title = newTitle;
+      photo.description = newDescription;
+      mostrarImagen();
+      savePhotos(); // Guardar las fotos en el almacenamiento
+    }
+  }
 }
 
-//fgghj
+function savePhotos() {
+  localStorage.setItem('photos', JSON.stringify(photos));
+}
 
 
-// Event listener para agregar una foto al enviar el formulario
+
+
+
 const addPhotoForm = document.getElementById('addPhotoForm');
 addPhotoForm.addEventListener('submit', insertarImagen);
 
-// Mostrar las fotos iniciales en la galería
+
 mostrarImagen();
 

@@ -67,7 +67,8 @@ position: relative;
 ul.navbar { 
  
   list-style-type: none;
-  margin: 0;
+  margin-left: 228px;
+  margin-right: 228px;
   padding: 0;
   overflow: hidden;
   background-color: #00B1DA;
@@ -86,6 +87,7 @@ ul.navbar li a {
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
+  
 }
 
 ul.navbar li a:hover {
