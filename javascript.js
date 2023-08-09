@@ -67,7 +67,7 @@ function editar(photoId) {
       photo.title = newTitle;
       photo.description = newDescription;
       mostrarImagen();
-      savePhotos(); // Guardar las fotos en el almacenamiento
+      savePhotos(); 
     }
   }
 }
